@@ -1,0 +1,25 @@
+development:
+  twitter:
+    api_key: ""
+    api_secret: ""
+  stripe:
+    api_key: ""
+    api_publish: ""
+  mixpanel:
+    api_key: ""
+    api_secret: ""
+    token: ""
+  google_analytics:
+    domain: ""
+    account: ""
+production:
+  twitter:
+    api_key: ""
+    api_secret: ""
+  stripe:
+    api_key: ""
+    api_publish: ""
+  mixpanel:
+    api_key: ""
+    api_secret: ""
+    token: ""
