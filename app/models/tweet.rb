@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
   belongs_to :search_term
   belongs_to :user
-  has_one :favorite
+  has_one :favorite, dependent: :destroy
 
   validates_presence_of :tweet_id
   validates_uniqueness_of :tweet_id, scope: :user_id
@@ -29,5 +29,5 @@ class Tweet < ActiveRecord::Base
   def auto_favorited?
     favorited? && favorite.automatic?
   end
-  
+
 end

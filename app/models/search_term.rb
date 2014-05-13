@@ -4,7 +4,7 @@ class SearchTerm < ActiveRecord::Base
   # keywords, location_id, user_id
   belongs_to :location
   belongs_to :user
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
 
   validates_presence_of :keywords
 
@@ -14,5 +14,5 @@ class SearchTerm < ActiveRecord::Base
     processor = TwitterSearchProcessor.new(self, user, TwitterSearcher, TwitterRestClient, Tweet)
     processor.process!
   end
-    
+
 end

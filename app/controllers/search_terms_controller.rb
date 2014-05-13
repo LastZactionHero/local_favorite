@@ -43,7 +43,11 @@ class SearchTermsController < ApplicationController
   end
 
   def destroy
-
+    @search_term = SearchTerm.find(params[:id])
+    @search_term.destroy
+    
+    flash[:notice] = "Search term deleted."
+    redirect_to search_terms_path
   end
 
 end

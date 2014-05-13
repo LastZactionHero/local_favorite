@@ -13,11 +13,17 @@
     <tr>
       <th>Keywords</th>
       <th>Location</th>
+      <th>Delete</th>
     </tr>
     <% @search_terms.each do |search_term| %>
       <tr>
         <td><%= search_term.keywords %></td>
         <td><%= search_term.location %></td>
+        <td><%= link_to "Delete", search_term_path(search_term),
+                method: :delete,
+                data: {confirm: "Are you sure you would like to delete this search term? All tweets will be deleted."}
+            %>
+        </td>
       </tr>
     <% end %>
   </table>
