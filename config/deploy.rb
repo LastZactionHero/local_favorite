@@ -1,10 +1,5 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
-require 'sidekiq/capistrano'
-
-set :whenever_command, "bundle exec whenever"
-set :whenever_environment, defer { rails_env }
-require "whenever/capistrano"
 
 set :application, "local_favorite"
 set :keep_releases, 5
@@ -38,6 +33,14 @@ set :rvm_type, :system
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
+  task :config_symlink do
+    puts "Running this!"
+    run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "cp #{shared_path}/config/secrets.yml #{release_path}/config/secrets.yml"
+    run "cp #{shared_path}/config/settings.yml #{release_path}/config/settings.yml"
+    puts "Ran it!"
+  end
+
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
@@ -45,5 +48,6 @@ namespace :deploy do
   end
 end
 
+before "deploy:assets:symlink","deploy:config_symlink"
 after 'deploy:update_code', 'deploy:migrate'
 after "deploy:restart", "deploy:cleanup"
