@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513163407) do
+ActiveRecord::Schema.define(version: 20140513164123) do
 
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20140513163407) do
     t.string   "username"
     t.string   "twitter_access_token"
     t.string   "twitter_access_token_secret"
+    t.boolean  "automatic_favoriting",        default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

@@ -38,7 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'rails_autolink', '~> 1.1.5'
+gem 'bootstrap-switch-rails', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 3.2.4'
@@ -47,6 +47,7 @@ gem 'geocoder', '~> 1.2.0'
 gem 'mysql2', '~> 0.3.15'
 gem 'omniauth', '~> 1.2.1'
 gem 'rails_admin', '~> 0.6.2'
+gem 'rails_autolink', '~> 1.1.5'
 gem 'stripe', '~> 1.11.0'
 gem 'twitter', '~> 5.8.0'
 gem 'omniauth-twitter', '~> 1.0.1'

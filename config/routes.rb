@@ -22,7 +22,14 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: [:create]
-  
+
+  resources :users, only: [] do
+    collection do
+      put :toggle_automatic_favoriting
+    end
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

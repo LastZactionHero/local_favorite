@@ -9,10 +9,10 @@ class SearchTerm < ActiveRecord::Base
   validates_presence_of :keywords
 
   after_create :search!
-  
+
   def search!
     processor = TwitterSearchProcessor.new(self, user, TwitterSearcher, TwitterRestClient, Tweet)
     processor.process!
   end
-
+    
 end

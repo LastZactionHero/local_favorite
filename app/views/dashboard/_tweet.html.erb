@@ -14,7 +14,7 @@
     <div class='location'>from <%= user.location %></div>
   </div>
   <div class='col-md-1'>
-    <%= link_to raw("#{fa_icon('star')} #{tweet.favorited? ? 'Favorited' : 'Favorite'}"), "#",
+    <%= link_to raw("#{fa_icon('star')} #{tweet.favorited? ? tweet.auto_favorited? ? 'Auto' : 'Favorited' : 'Favorite'}"), "#",
         class: "btn  #{tweet.favorited? ? 'btn-warning' : 'favorite btn-primary'}", "data-tweet-id" => tweet.id %>
   </div>
 

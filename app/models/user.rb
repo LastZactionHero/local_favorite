@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :search_terms
   has_many :tweets
   has_many :favorites
-  
+
   def email_required?
     super && provider.blank?
   end
@@ -23,4 +23,9 @@ class User < ActiveRecord::Base
     username || email
   end
 
+  def set_automatic_favoriting!(enabled)
+    self.automatic_favoriting = enabled
+    self.save
+  end
+  
 end

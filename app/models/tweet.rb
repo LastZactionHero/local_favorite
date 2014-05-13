@@ -26,4 +26,8 @@ class Tweet < ActiveRecord::Base
     favorite.present?
   end
 
+  def auto_favorited?
+    favorited? && favorite.automatic?
+  end
+  
 end

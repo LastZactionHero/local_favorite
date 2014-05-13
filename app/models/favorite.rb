@@ -6,7 +6,16 @@ class Favorite < ActiveRecord::Base
   validates :selection, inclusion: { :in => ["manual", "automatic"] }
 
   def favorite!
-    client = TwitterRestClient.construct(user)
-    client.favorite!(tweet.tweet_id)
+    begin
+      client = TwitterRestClient.construct(user)
+      client.favorite!(tweet.tweet_id)
+      true
+    rescue Twitter::Error::AlreadyFavorited => e
+      false
+    end
+  end
+
+  def automatic?
+    selection == "automatic"
   end
 end
