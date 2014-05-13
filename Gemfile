@@ -50,6 +50,7 @@ gem 'rails_admin', '~> 0.6.2'
 gem 'stripe', '~> 1.11.0'
 gem 'twitter', '~> 5.8.0'
 gem 'omniauth-twitter', '~> 1.0.1'
+gem 'whenever', '~> 0.9.2'
 
 gem 'capistrano', '~> 2.15.5', group: :development
 gem 'rvm-capistrano', '~> 1.5.1', group: :development

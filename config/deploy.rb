@@ -1,6 +1,12 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
 
+set :whenever_command, "bundle exec whenever"
+set :whenever_environment, defer { rails_env }
+set :whenever_identifier, defer { "#{application}_#{rails_env}" }
+require "whenever/capistrano"
+
+
 set :application, "local_favorite"
 set :keep_releases, 5
 
@@ -13,7 +19,7 @@ set :repository, "git@github.com:LastZactionHero/local_favorite.git"
 ssh_options[:forward_agent] = true
 
 set :user, "root"
-server "yuccasix.com", :app, :web, :db, :primary => true
+server "localfavorite.yuccasix.com", :app, :web, :db, :primary => true
 
 set :application, "local_favorite"
 set :deploy_to, "/var/www/#{application}"
