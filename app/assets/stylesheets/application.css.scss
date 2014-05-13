@@ -156,3 +156,34 @@ html, body {
   margin-bottom: 16px;
   color: red;
 }
+
+.tweet-list {
+
+  .tweet {
+    padding: 8px 0px;
+    border-top: 1px solid #eeeeee;
+
+    .avatar {
+      padding-top: 2px;
+      width: 60px;
+    }
+
+    .username {
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .text {
+      margin-bottom: 6px;
+    }
+
+    .location {
+      font-size: 12px;
+    }
+  }
+
+  .tweet:nth-child(odd)
+  {
+    background-color: $color_background_gray;
+  }
+}

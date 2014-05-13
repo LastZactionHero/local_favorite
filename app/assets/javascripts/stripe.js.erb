@@ -1,5 +1,7 @@
 $(document).ready(function(){
-  Stripe.setPublishableKey('<%= APP_SETTINGS["stripe"]["api_publish"] %>');
+  if(typeof(Stripe) != 'undefined') {
+    Stripe.setPublishableKey('<%= APP_SETTINGS["stripe"]["api_publish"] %>');
+  }
 
   function stripeResponseHandler(status, response) {
       if (response.error) {

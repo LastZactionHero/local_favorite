@@ -1,0 +1,28 @@
+<h1>Search Terms</h1>
+
+<div class='row'>
+  <div class='col-md-1'>
+    <%= link_to "Add", new_search_term_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<hr/>
+
+<% if @search_terms.any? %>
+  <table class='table table-bordered'>
+    <tr>
+      <th>Keywords</th>
+      <th>Location</th>
+    </tr>
+    <% @search_terms.each do |search_term| %>
+      <tr>
+        <td><%= search_term.keywords %></td>
+        <td><%= search_term.location %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <div class='well text-center'>
+    <h4><%= link_to "Add your first search term!", new_search_term_path %></h4>
+  </div>
+<% end %>

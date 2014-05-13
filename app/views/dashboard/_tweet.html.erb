@@ -1,0 +1,21 @@
+<li class='row tweet'>
+  <% user = tweet.user %>
+
+  <div class='col-md-1 avatar'>
+    <%= image_tag user.profile_image_url %>
+  </div>
+  <div class='col-md-10'>
+    <div class='username'>
+      <strong><%= user.screen_name %></strong>
+      at
+      <%= tweet.created_at.to_s(:long) %>
+    </div>
+    <div class='text'><%= auto_link(tweet.text, link: :urls, html: {target: :blank}) %></div>
+    <div class='location'>from <%= user.location %></div>
+  </div>
+  <div class='col-md-1'>
+    <%= link_to raw("#{fa_icon('star')} #{tweet.favorited? ? 'Favorited' : 'Favorite'}"), "#",
+        class: "btn  #{tweet.favorited? ? 'btn-warning' : 'favorite btn-primary'}", "data-tweet-id" => tweet.id %>
+  </div>
+
+</li>

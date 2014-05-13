@@ -6,7 +6,11 @@ class User < ActiveRecord::Base
          :omniauth_providers => [:twitter]
 
   has_one :user_plan
-
+  has_many :locations
+  has_many :search_terms
+  has_many :tweets
+  has_many :favorites
+  
   def email_required?
     super && provider.blank?
   end

@@ -6,13 +6,23 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'dashboard#index'
 
-  resources :plans, only:[:index] do
+  resources :plans, only: [:index] do
     member do
       get :checkout
       post :purchase
     end
   end
 
+  resources :search_terms, only: [:index, :new, :create, :destroy]
+
+  resources :locations, only: [] do
+    collection do
+      get :geocode
+    end
+  end
+
+  resources :favorites, only: [:create]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

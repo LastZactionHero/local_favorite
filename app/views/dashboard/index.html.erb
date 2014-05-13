@@ -1,1 +1,14 @@
-<h1>Dashboard</h1>
+<div class='row'>
+  <h1>Dashboard</h1>
+</div>
+
+<div class='row'>
+  <h2>Search Terms</h2>
+  <p>
+    <%= link_to pluralize(@search_terms.count, "search term"),
+           search_terms_path, class: 'btn btn-primary' %>
+  </p>
+</div>
+
+
+<%= render partial: 'tweets', locals: {tweets: @tweets} %>

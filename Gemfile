@@ -38,12 +38,17 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'rails_autolink', '~> 1.1.5'
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 3.2.4'
 gem 'font-awesome-rails', '~> 4.0.3.2'
+gem 'geocoder', '~> 1.2.0'
 gem 'omniauth', '~> 1.2.1'
 gem 'rails_admin', '~> 0.6.2'
 gem 'stripe', '~> 1.11.0'
 gem 'twitter', '~> 5.8.0'
 gem 'omniauth-twitter', '~> 1.0.1'
+
+gem 'capistrano', '~> 2.15.5', group: :development
+gem 'rvm-capistrano', '~> 1.5.1', group: :development
