@@ -1,0 +1,14 @@
+<div class='row'>
+  <h1>Favorites</h1>
+
+  <% if @tweets.any? %>
+    <p>These tweets from <%= link_to "your list", tweets_path %> were favorited, manually or automatically.</p>
+    <%= render partial: "tweets/tweet_list", locals: {tweets: @tweets} %>
+  <% else %>
+    <div class='well'>
+      <h3 class='text-center'>You have not favorited any tweets!</h3>
+      <p class='text-center'>Favorite some <%= link_to "tweets", tweets_path %> from your searches or
+         enabled <%= link_to "auto-favoriting", dashboard_path %>.</p>
+    </div>
+  <% end %>
+</div>

@@ -8,7 +8,7 @@
     <div class='username'>
       <strong><%= user.screen_name %></strong>
       at
-      <%= tweet.created_at.to_s(:long) %>
+      <%= tweet.tweeted_at.to_s(:long) %>
     </div>
     <div class='text'><%= auto_link(tweet.text, link: :urls, html: {target: :blank}) %></div>
     <div class='location'>from <%= user.location %></div>

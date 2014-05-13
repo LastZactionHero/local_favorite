@@ -1,5 +1,10 @@
 class FavoritesController < ApplicationController
 
+  def index
+    @favorites = current_user.favorites
+    @tweets = @favorites.map{|f| f.tweet}
+  end
+
   def create
     @favorite = Favorite.create(
       user_id: current_user.id,
@@ -11,7 +16,7 @@ class FavoritesController < ApplicationController
 
   def unfavorite
     tweet = Tweet.find(params[:tweet_id])
-    
+
     @favorite = tweet.favorite
     @favorite.unfavorite!
 

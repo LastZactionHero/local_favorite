@@ -29,12 +29,15 @@ class TwitterSearchProcessor
   def store_results!(results)
     @stored = []
 
-    results.each do |result|
-      @stored << @store_type.create(
-        tweet_id: result[:id],
-        data: result.to_s,
-        user: @user,
-        search_term: @search_term)
+    begin
+      results.each do |result|
+        @stored << @store_type.create(
+          tweet_id: result[:id],
+          data: result.to_s,
+          user: @user,
+          search_term: @search_term)
+      end
+    rescue ActiveRecord::StatementInvalid => e
     end
 
     @stored

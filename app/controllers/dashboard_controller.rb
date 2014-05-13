@@ -3,7 +3,8 @@ class DashboardController < ApplicationController
 
   def index
     @search_terms = current_user.search_terms
-    @tweets = current_user.tweets.order("id DESC").limit(100)
+    @favorites = current_user.favorites.where("created_at > ?", 1.day.ago)
+    @tweets = current_user.tweets.where("created_at > ?", 1.day.ago)
   end
 
 end

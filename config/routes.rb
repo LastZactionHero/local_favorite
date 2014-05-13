@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :favorites, only: [:create] do
+  resources :tweets, only: [:index]
+  
+  resources :favorites, only: [:create, :index] do
     collection do
       post :unfavorite
     end

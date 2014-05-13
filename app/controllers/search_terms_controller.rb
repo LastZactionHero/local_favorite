@@ -38,14 +38,19 @@ class SearchTermsController < ApplicationController
       render :new
     else
       flash[:notice] = "Search term added."
-      redirect_to search_terms_path
+
+      if current_user.search_terms.count > 1
+        redirect_to search_terms_path
+      else
+        redirect_to dashboard_path
+      end
     end
   end
 
   def destroy
     @search_term = SearchTerm.find(params[:id])
     @search_term.destroy
-    
+
     flash[:notice] = "Search term deleted."
     redirect_to search_terms_path
   end

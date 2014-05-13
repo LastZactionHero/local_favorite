@@ -3,21 +3,54 @@
 </div>
 
 <div class='row'>
-  <h2>Automatic Favoriting</h2>
-  <input
-    class="toggle-automatic-favoriting"
-    type="checkbox"
-    name="my-checkbox"
-    <%= current_user.automatic_favoriting? ? "checked" : nil %>
-  />
+  <% if @search_terms.empty? %>
+    <div class='well'>
+      <h3 class='text-center'><%= link_to raw("#{fa_icon('search')}&nbsp;&nbsp;Add your first search term to get started."), new_search_term_path %></h3>
+    </div>
+  <% elsif @tweets.empty? %>
+    <div class='well'>
+      <h3 class='text-center'>You have not found any tweets!</h3>
+      <p class='text-center'><%= link_to "Add some more search terms.", search_terms_path %></p>
+    </div>
+  <% else %>
+    <div class='col-md-6'>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Today's Results</h3>
+        </div>
+        <div class="panel-body">
+          <h3><%= pluralize(@favorites.count, "favorite") %></h3>
+          <h3><%= pluralize(@tweets.count, "found tweet") %></h3>
+          <h3><%= pluralize(@search_terms.count, "search term") %></h3>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Automatic Favoriting</h3>
+        </div>
+        <div class="panel-body">
+          <p>Automatically favorite tweets from your search results each hour.</p>
+          <div>
+            <input
+              class="toggle-automatic-favoriting"
+              type="checkbox"
+              name="my-checkbox"
+              <%= current_user.automatic_favoriting? ? "checked" : nil %>
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
-<div class='row'>
-  <h2>Search Terms</h2>
-  <p>
-    <%= link_to pluralize(@search_terms.count, "search term"),
-           search_terms_path, class: 'btn btn-primary' %>
-  </p>
-</div>
-
-<%= render partial: 'tweets', locals: {tweets: @tweets} %>
+<% if @tweets.any? %>
+  <div class='row'>
+    <h2>Today's Tweets</h2>
+    <div class='col-md-12'>
+      <%= render partial: 'tweets/tweet_list', locals: {tweets: @tweets} %>
+    </div>
+  </div>
+<% end %>

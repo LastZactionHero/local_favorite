@@ -1,0 +1,5 @@
+<ul class='list-unstyled tweet-list'>
+  <% tweets.each do |tweet| %>
+    <%= render partial: 'tweets/tweet', locals: {tweet: tweet} %>
+  <% end %>
+</ul>

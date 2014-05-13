@@ -18,7 +18,7 @@ class Tweet < ActiveRecord::Base
     TweetUser.new(data[:user])
   end
 
-  def created_at
+  def tweeted_at
     DateTime.parse(data[:created_at])
   end
 
