@@ -9,4 +9,14 @@ class FavoritesController < ApplicationController
     render status: 200, json: {}
   end
 
+  def unfavorite
+    tweet = Tweet.find(params[:tweet_id])
+    
+    @favorite = tweet.favorite
+    @favorite.unfavorite!
+
+    @favorite.destroy
+
+    render status: 200, json: {}
+  end
 end

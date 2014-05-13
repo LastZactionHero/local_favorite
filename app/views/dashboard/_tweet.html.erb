@@ -15,7 +15,9 @@
   </div>
   <div class='col-md-1'>
     <%= link_to raw("#{fa_icon('star')} #{tweet.favorited? ? tweet.auto_favorited? ? 'Auto' : 'Favorited' : 'Favorite'}"), "#",
-        class: "btn  #{tweet.favorited? ? 'btn-warning' : 'favorite btn-primary'}", "data-tweet-id" => tweet.id %>
+        class: "favorite btn  #{tweet.favorited? ? 'btn-warning' : 'btn-primary'}",
+        "data-tweet-id" => tweet.id,
+        "data-favorited" => tweet.favorited? %>
   </div>
 
 </li>

@@ -21,7 +21,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :favorites, only: [:create]
+  resources :favorites, only: [:create] do
+    collection do
+      post :unfavorite
+    end
+  end
 
   resources :users, only: [] do
     collection do

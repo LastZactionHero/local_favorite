@@ -15,6 +15,12 @@ class Favorite < ActiveRecord::Base
     end
   end
 
+  def unfavorite!
+    client = TwitterRestClient.construct(user)
+    client.unfavorite(tweet.tweet_id)
+    true
+  end
+
   def automatic?
     selection == "automatic"
   end
