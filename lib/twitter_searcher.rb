@@ -12,14 +12,13 @@ class TwitterSearcher
   end
 
   def search!
-    Rails.logger.warn "Searching with geo string: #{geo_string}"
-
     results = @client.search(@keywords,
       geocode: geo_string,
       count: search_count,
       result_type: 'recent',
       lang: 'en'
       ).take(search_count)
+    results.delete_if{|r| r.reply?}
     @results = results.map{|r| r.to_h}
   end
 
@@ -30,9 +29,6 @@ class TwitterSearcher
   end
 
   def geo_string
-    Rails.logger.warn "#{@latitude} #{@longitude} #{@radius} #{@radius_unit}"
-
-    
     if @latitude && @longitude && @radius && @radius_unit
       "#{@latitude},#{@longitude},#{@radius}#{@radius_unit}"
     else
