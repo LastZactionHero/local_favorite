@@ -16,7 +16,7 @@
   <div class='row'>
     <div class='row col-md-6'>
       <div class='form-group col-md-12'>
-        <%= f.label :location, "Address" %>
+        <%= f.label :location, "Address (optional)" %>
         <%= f.text_field :location, class: 'form-control',
           placeholder: '1600 Pennsylvania Ave NW, Washington, DC 20500' %>
         <%= f.hidden_field :location_id %>
@@ -30,7 +30,7 @@
       </p>
 
       <div class='col-md-12'>
-        <%= f.label :radius, "Search Radius (km)" %>
+        <%= f.label :radius, "Search Radius (km, optional)" %>
         <%= f.text_field :radius, class: 'form-control', placeholder: 10 %>
       </div>
     </div>
