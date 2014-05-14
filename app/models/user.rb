@@ -27,5 +27,13 @@ class User < ActiveRecord::Base
     self.automatic_favoriting = enabled
     self.save
   end
-  
+
+  def plan
+    user_plan ? user_plan.plan : DefaultPlan.new
+  end
+
+  def can_add_more_search_terms?
+    search_terms.count < plan.max_search_terms
+  end
+
 end

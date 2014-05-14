@@ -10,6 +10,11 @@ class SearchTermsController < ApplicationController
   end
 
   def create
+    unless current_user.can_add_more_search_terms?
+      flash[:alert] = "You have added your maximum number of search terms for this plan."
+      redirect_to search_terms_path and return
+    end
+
     search_term = params[:search_term]
     address = search_term.delete(:location)
     radius = search_term.delete(:radius)
@@ -54,5 +59,6 @@ class SearchTermsController < ApplicationController
     flash[:notice] = "Search term deleted."
     redirect_to search_terms_path
   end
+
 
 end

@@ -2,7 +2,8 @@ class PlansController < ApplicationController
   before_filter :find_plan_or_fail, only: [:checkout, :purchase]
 
   def index
-    @plans = Plan.all
+    @current_plan = current_user.plan if current_user
+    @plans = [DefaultPlan.new] + Plan.where(public: true)
   end
 
   def checkout

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513164123) do
+ActiveRecord::Schema.define(version: 20140514010844) do
 
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
@@ -37,10 +37,14 @@ ActiveRecord::Schema.define(version: 20140513164123) do
   create_table "plans", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "amount",         precision: 6, scale: 2
+    t.decimal  "amount",                       precision: 6, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "stripe_plan_id"
+    t.boolean  "public"
+    t.boolean  "automatic_favoriting_enabled"
+    t.integer  "max_search_terms"
+    t.integer  "max_favorites_per_day"
   end
 
   create_table "search_terms", force: true do |t|

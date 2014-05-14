@@ -2,18 +2,23 @@ $(document).ready(function(){
   $(".favorite").click(function(){
     var tweetId = $(this).attr('data-tweet-id');
     var favorited = $(this).attr('data-favorited');
+
+    button = $(this);
+
     if(favorited == 'true') {
-        $(this).removeClass("btn-warning");
-        $(this).addClass("btn-primary");
-        $(this).attr("data-favorited", false);
+        button.removeClass("btn-warning");
+        button.addClass("btn-primary");
+        button.attr("data-favorited", false);
         $.post("/favorites/unfavorite.json", {tweet_id: tweetId}).success(function(){
         });
     } else {
-        $(this).removeClass("btn-primary");
-        $(this).addClass("btn-warning");
-        $(this).attr("data-favorited", true);
-        $.post("/favorites.json", {tweet_id: tweetId}).success(function(){
-        })
+        $.post("/favorites.json", {tweet_id: tweetId}).done(function(){
+          button.removeClass("btn-primary");
+          button.addClass("btn-warning");
+          button.attr("data-favorited", true);
+        }).error(function(){
+          alert("You have favorited the maxium number of tweets today for this plan.");
+        });
     }
 
     return false;
