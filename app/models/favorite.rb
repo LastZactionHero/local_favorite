@@ -13,7 +13,11 @@ class Favorite < ActiveRecord::Base
       client = TwitterRestClient.construct(user)
       client.favorite!(tweet.tweet_id)
       true
+    rescue Twitter::Error::NotFound => e
+      false
     rescue Twitter::Error::AlreadyFavorited => e
+      false
+    rescue Twitter::Error::Unauthorized => e
       false
     end
   end
