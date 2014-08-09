@@ -10,7 +10,8 @@
   <% elsif @tweets.empty? %>
     <div class='well'>
       <h3 class='text-center'>You have not found any tweets!</h3>
-      <p class='text-center'><%= link_to "Add some more search terms.", search_terms_path %></p>
+      <h5 class='text-center'>Nothing came back our search. Might want to try some new keywords.</h5>
+      <p class='text-center'><%= link_to "Add/Edit Search Terms.", search_terms_path %></p>
     </div>
   <% else %>
     <div class='col-md-6'>

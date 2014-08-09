@@ -1,59 +1,7 @@
 <h1>New Search Term</h1>
 
-<%= form_for(@search_term) do |f| %>
-  <% @search_term.errors.full_messages.each do |msg| %>
-    <p class='text-danger'><%= msg %></p>
-  <% end %>
-
-  <div class='row'>
-    <div class='form-group col-md-6'>
-      <%= f.label :keywords %>
-      <%= f.text_field :keywords, class: 'form-control',
-         placeholder: 'coffee' %>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='row col-md-6'>
-      <div class='form-group col-md-12'>
-        <%= f.label :location, "Address (optional)" %>
-        <%= f.text_field :location, class: 'form-control',
-          placeholder: '1600 Pennsylvania Ave NW, Washington, DC 20500' %>
-        <%= f.hidden_field :location_id %>
-      </div>
-
-      <p class='found-location col-md-12 hidden'>
-        <strong>Latitude: </strong>
-        <span id='latitude'></span>
-        <strong>Longitude: </strong>
-        <span id='longitude'></span>
-      </p>
-
-      <div class='col-md-12'>
-        <%= f.label :radius, "Search Radius (km, optional)" %>
-        <%= f.text_field :radius, class: 'form-control', placeholder: 10 %>
-      </div>
-    </div>
-
-    <div class='col-md-6'>
-      <% if @locations.any? %>
-        <h5>Your Locations</h5>
-        <ul class='list-unstyled'>
-          <% @locations.each do |location| %>
-            <li>
-              <%= link_to location, "#", class: 'past-location',
-                "data-location-id" => location.id,
-                "data-location-name" => location.name %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-
-  <hr/>
-
-  <div class='form-group'>
-    <%= f.submit "Add Search Term", class: 'btn btn-success' %>
-  </div>
-<% end %>
+<%= render partial: "form", locals:
+  { url: search_terms_path,
+    method: :post,
+    message: "Add Search Term"} 
+%>

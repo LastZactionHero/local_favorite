@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :search_terms, only: [:index, :new, :create, :destroy]
+  resources :search_terms
 
   resources :locations, only: [] do
     collection do
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :tweets, only: [:index]
-  
+
   resources :favorites, only: [:create, :index] do
     collection do
       post :unfavorite

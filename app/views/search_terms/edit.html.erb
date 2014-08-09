@@ -1,0 +1,7 @@
+<h1>Edit Search Term</h1>
+
+<%= render partial: "form", locals:
+  { url: search_term_path(@search_term),
+    method: :put,
+    message: "Edit Search Term"}
+%>
