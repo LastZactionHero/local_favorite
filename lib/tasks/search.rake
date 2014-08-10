@@ -18,6 +18,7 @@ namespace :search do
       "New Tweets for User"
       user = user_tweets[:user]
       next unless user.automatic_favoriting?
+      next unless Favorite.below_daily_limit?(user)
 
       puts "Still Here"
       tweets = user_tweets[:tweets]

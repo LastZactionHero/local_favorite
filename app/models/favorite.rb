@@ -6,6 +6,10 @@ class Favorite < ActiveRecord::Base
   validates_presence_of :selection
   validates :selection, inclusion: { :in => ["manual", "automatic"] }
 
+  scope :favorited_since, ->(time) {where("created_at > ?", time)}
+
+  DAILY_FAVORITE_LIMIT = 400
+
   def favorite!
     return false unless tweet
 
@@ -31,4 +35,10 @@ class Favorite < ActiveRecord::Base
   def automatic?
     selection == "automatic"
   end
+
+  def self.below_daily_limit?(user)
+    today_count = Favorite.where(user: user).favorited_since(1.day.ago).count
+    today_count < DAILY_FAVORITE_LIMIT
+  end
+
 end
