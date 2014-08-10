@@ -21,7 +21,7 @@ class DefaultPlan
   end
 
   def max_search_terms
-    1
+    2
   end
 
   def free?
