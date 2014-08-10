@@ -16,10 +16,10 @@ class SearchTermsController < ApplicationController
   def update
     search_term = params[:search_term]
     address = search_term.delete(:location)
-    radius = search_term.delete(:radius)
+    radius = search_term.delete(:radius).to_i
 
-    if address && search_term[:location_id].blank?
-      location = build_new_location(address, radius)
+    if address
+      location = find_or_build_location(address, radius)
       search_term[:location_id] = location.id if location
     end
 
@@ -54,7 +54,7 @@ class SearchTermsController < ApplicationController
     radius = search_term.delete(:radius)
 
     if address && search_term[:location_id].blank?
-      location = build_new_location(address, radius)
+      location = find_or_build_location(address, radius)
       search_term[:location_id] = location.id if location
     end
 
@@ -85,7 +85,10 @@ class SearchTermsController < ApplicationController
 
   private
 
-  def build_new_location(address, radius)
+  def find_or_build_location(address, radius)
+    location = Location.where(user_id: current_user.id).find_by_name_and_radius(address, radius)
+    return location if location
+
     searcher = GeoSearcher.new(address, Geocoder)
     begin
       result = searcher.search!

@@ -7,8 +7,11 @@ $(document).ready(function(){
   $(".past-location").click(function(){
     var locationId = $(this).attr('data-location-id');
     var locationName = $(this).attr('data-location-name');
+    var radius = $(this).attr("data-location-radius");
+
     $("#search_term_location").val(locationName);
     $("#search_term_location_id").val(locationId);
+    $("#search_term_radius").val(radius);
 
     return false;
   });

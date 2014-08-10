@@ -33,8 +33,11 @@
       </p>
 
       <div class='col-md-12'>
+        <% location = @search_term.location %>
+
         <%= f.label :radius, "Search Radius (km, optional)" %>
-        <%= f.text_field :radius, class: 'form-control', placeholder: 10 %>
+        <%= f.text_field :radius, class: 'form-control', placeholder: 10,
+          value: location ? location.radius : nil %>
       </div>
     </div>
 
@@ -44,9 +47,10 @@
         <ul class='list-unstyled'>
           <% @locations.each do |location| %>
             <li>
-              <%= link_to location, "#", class: 'past-location',
+              <%= link_to "#{location} (#{location.radius}#{location.radius_unit})", "#", class: 'past-location',
                 "data-location-id" => location.id,
-                "data-location-name" => location.name %>
+                "data-location-name" => location.name,
+                "data-location-radius" => location.radius %>
             </li>
           <% end %>
         </ul>

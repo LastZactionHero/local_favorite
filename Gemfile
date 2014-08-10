@@ -46,6 +46,7 @@ gem 'font-awesome-rails', '~> 4.0.3.2'
 gem 'geocoder', '~> 1.2.0'
 gem 'mysql2', '~> 0.3.15'
 gem 'omniauth', '~> 1.2.1'
+gem 'pry', '~> 0.10.0', group: [:development]
 gem 'rails_admin', '~> 0.6.2'
 gem 'rails_autolink', '~> 1.1.5'
 gem 'stripe', '~> 1.11.0'
