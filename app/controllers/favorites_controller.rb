@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
 
   def index
-    @favorites = current_user.favorites.order("created_at DESC")
+    @favorites = current_user.favorites.order("created_at DESC").limit(200)
     @tweets = @favorites.map{|f| f.tweet}
   end
 

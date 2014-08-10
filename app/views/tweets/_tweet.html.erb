@@ -12,8 +12,11 @@
     </div>
     <div class='text'><%= auto_link(tweet.text, link: :urls, html: {target: :blank}) %></div>
     <div class='location'>
-      from <%= user.location %> |
-      <%= link_to tweet.search_term, edit_search_term_path(tweet.search_term) %>
+      from <%= user.location %>
+      <% if tweet.search_term %>
+        |
+        <%= link_to tweet.search_term, edit_search_term_path(tweet.search_term) %>
+      <% end %>
     </div>
   </div>
   <div class='col-md-1'>
