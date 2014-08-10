@@ -29,6 +29,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :profile, only: [:index] do
+    collection do
+      put :update
+    end
+  end
+
   resources :users, only: [] do
     collection do
       put :toggle_automatic_favoriting

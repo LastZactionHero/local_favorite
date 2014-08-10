@@ -9,6 +9,7 @@ class Ability
     end
 
     if user
+      can [:index, :update], :profile
       can [:index], :dashboard
     end
 
