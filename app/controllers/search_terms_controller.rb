@@ -1,8 +1,10 @@
 class SearchTermsController < ApplicationController
   before_filter :find_search_term, only: [:edit, :update, :destroy]
   before_filter :find_locations, only: [:new, :edit, :update, :create]
+
   def index
     @search_terms = current_user.search_terms
+    @can_add_more_terms = current_user.can_add_more_search_terms?
   end
 
   def new
