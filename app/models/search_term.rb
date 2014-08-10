@@ -15,4 +15,8 @@ class SearchTerm < ActiveRecord::Base
     processor.process!
   end
 
+  def to_s
+    location ? "#{keywords} in #{location}" : keywords
+  end
+
 end

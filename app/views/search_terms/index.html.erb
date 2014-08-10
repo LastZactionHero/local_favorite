@@ -20,12 +20,14 @@
     <tr>
       <th>Keywords</th>
       <th>Location</th>
+      <th>Tweets in Last 30 Days</th>
       <th></th>
     </tr>
     <% @search_terms.each do |search_term| %>
       <tr>
         <td><%= search_term.keywords %></td>
         <td><%= search_term.location %></td>
+        <td><%= search_term.tweets.since(30.days.ago).count %></td>
         <td>
             <%= link_to "Edit", edit_search_term_path(search_term) %>
             |

@@ -6,6 +6,8 @@ class Tweet < ActiveRecord::Base
   validates_presence_of :tweet_id
   validates_uniqueness_of :tweet_id, scope: :user_id
 
+  scope :since, ->(time) {where("created_at > ?", time)}
+
   def data
     eval(self[:data])
   end

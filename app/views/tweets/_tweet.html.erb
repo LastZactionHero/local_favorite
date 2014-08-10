@@ -11,7 +11,10 @@
       <%= tweet.tweeted_at.to_s(:long) %>
     </div>
     <div class='text'><%= auto_link(tweet.text, link: :urls, html: {target: :blank}) %></div>
-    <div class='location'>from <%= user.location %></div>
+    <div class='location'>
+      from <%= user.location %> |
+      <%= link_to tweet.search_term, edit_search_term_path(tweet.search_term) %>
+    </div>
   </div>
   <div class='col-md-1'>
     <%= link_to raw("#{fa_icon('star')} #{tweet.favorited? ? tweet.auto_favorited? ? 'Auto' : 'Favorited' : 'Favorite'}"), "#",
