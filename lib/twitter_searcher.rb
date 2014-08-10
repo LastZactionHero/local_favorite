@@ -12,14 +12,17 @@ class TwitterSearcher
   end
 
   def search!
-    results = @client.search(@keywords,
-      geocode: geo_string,
-      count: search_count,
-      result_type: 'recent',
-      lang: 'en'
-      ).take(search_count)
-    results.delete_if{|r| r.reply?}
-    @results = results.map{|r| r.to_h}
+    begin
+      results = @client.search(@keywords,
+        geocode: geo_string,
+        count: search_count,
+        result_type: 'recent',
+        lang: 'en'
+        ).take(search_count)
+      results.delete_if{|r| r.reply?}
+      @results = results.map{|r| r.to_h}
+    rescue Twitter::Error::Unauthorized => e
+    end
   end
 
   private
