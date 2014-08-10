@@ -74,7 +74,7 @@ html, body {
     padding-top: 64px;
 
     background-color: $color_main_primary;
-    background-image:url('landing_background.png');
+    background-image:url(image-path('landing_background.png'));
     background-size: cover;
 
     color: white;
@@ -113,7 +113,7 @@ html, body {
   .landing-pricing {
     background-color: $color_background_gray;
     border-bottom: 16px solid $color_main_dark;
-    
+
     .price-highlight {
       color: $color_alternate_primary;
     }
