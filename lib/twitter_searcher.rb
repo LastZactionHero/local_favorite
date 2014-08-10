@@ -22,6 +22,7 @@ class TwitterSearcher
       results.delete_if{|r| r.reply?}
       @results = results.map{|r| r.to_h}
     rescue Twitter::Error::Unauthorized => e
+      []
     end
   end
 
