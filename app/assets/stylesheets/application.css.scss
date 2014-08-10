@@ -58,9 +58,10 @@ html, body {
   }
 
   .landing-header {
-    background-color: $color_main_primary;
+    background-color: $color_main_dark;
     color: white;
     padding-top: 8px;
+    padding-bottom: 8px;
 
     a {
       margin: 0px 16px;
@@ -70,9 +71,14 @@ html, body {
 
   .landing-main {
     min-height: 400px;
+    padding-top: 64px;
+
     background-color: $color_main_primary;
+    background-image:url('landing_background.png');
+    background-size: cover;
 
     color: white;
+    border-bottom: 16px solid $color_main_dark;
 
     h1 {
       font-size: 64px;
@@ -106,7 +112,8 @@ html, body {
 
   .landing-pricing {
     background-color: $color_background_gray;
-
+    border-bottom: 16px solid $color_main_dark;
+    
     .price-highlight {
       color: $color_alternate_primary;
     }
