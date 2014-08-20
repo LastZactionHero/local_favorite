@@ -44,6 +44,7 @@ gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 3.2.4'
 gem 'font-awesome-rails', '~> 4.0.3.2'
 gem 'geocoder', '~> 1.2.0'
+gem 'mandrill-api', '~> 1.0.52'
 gem 'mysql2', '~> 0.3.15'
 gem 'omniauth', '~> 1.2.1'
 gem 'pry', '~> 0.10.0', group: [:development]

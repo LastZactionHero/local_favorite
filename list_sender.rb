@@ -1,0 +1,1 @@
+list = [{email: 'zdicklin@gmail.com', first_name: 'Zach'}]BulkOutboundMailer.sent_to_list(list, 'Outbound - Local Business')
