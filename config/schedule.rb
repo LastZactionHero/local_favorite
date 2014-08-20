@@ -22,3 +22,7 @@
 every 1.hour do
   rake "search:search"
 end
+
+every 1.day do
+  rake "cleanup:remove_older_than_30_days"
+end
