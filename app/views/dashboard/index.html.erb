@@ -79,8 +79,9 @@
 
   <div class='row'>
     <h2>Today's Tweets</h2>
+    <h4>Last 100</h4>
     <div class='col-md-12'>
-      <%= render partial: 'tweets/tweet_list', locals: {tweets: @tweets} %>
+      <%= render partial: 'tweets/tweet_list', locals: {tweets: @tweets.slice(0,100)} %>
     </div>
   </div>
 <% end %>
