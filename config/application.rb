@@ -6,8 +6,11 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module LocalFavorite
   class Application < Rails::Application
+    APP_SETTINGS = YAML.load_file("#{Rails.root}/config/settings.yml")[Rails.env]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -21,5 +24,15 @@ module LocalFavorite
     # config.i18n.default_locale = :de
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    config.action_mailer.smtp_settings = {
+      :address   => "smtp.mandrillapp.com",
+      :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
+      :enable_starttls_auto => true, # detects and uses STARTTLS
+      :user_name => "zach@localfavorite.me",
+      :password => APP_SETTINGS["mandrill_api_key"],
+      :authentication => 'plain', # Mandrill supports 'plain' or 'login'
+      :domain => 'localfavorite.me', # your domain to identify your server when connecting
+    }
   end
 end

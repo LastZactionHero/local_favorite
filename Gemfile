@@ -43,6 +43,7 @@ gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 3.2.4'
 gem 'font-awesome-rails', '~> 4.0.3.2'
+gem 'exception_notification', '~> 4.0.1'
 gem 'geocoder', '~> 1.2.0'
 gem 'mandrill-api', '~> 1.0.52'
 gem 'mysql2', '~> 0.3.15'
@@ -56,4 +57,5 @@ gem 'omniauth-twitter', '~> 1.0.1'
 gem 'whenever', '~> 0.9.2'
 
 gem 'capistrano', '~> 2.15.5', group: :development
+gem 'letter_opener', '~> 1.2.0', group: :development
 gem 'rvm-capistrano', '~> 1.5.1', group: :development

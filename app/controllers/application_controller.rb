@@ -10,5 +10,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: exception.message
     end
   end
-  
+
+  if Rails.env.production?
+    rescue_from Exception do |exception|
+      ExceptionMailer.exception_email(exception, current_user).deliver
+      render template: false, file: 'public/500.html', status: 500
+    end
+  end
+
 end
