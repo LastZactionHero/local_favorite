@@ -23,6 +23,12 @@ class Favorite < ActiveRecord::Base
       false
     rescue Twitter::Error::Unauthorized => e
       false
+    rescue Twitter::Error::Forbidden => e
+      false
+    rescue Twitter::Error::TooManyRequests =>
+      false
+    rescue Exception => e
+      false
     end
   end
 
