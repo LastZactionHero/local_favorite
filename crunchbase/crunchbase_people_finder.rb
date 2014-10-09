@@ -1,6 +1,5 @@
 require 'json'
 require 'rest-client'
-require 'pry'
 require 'csv'
 
 raws = [
