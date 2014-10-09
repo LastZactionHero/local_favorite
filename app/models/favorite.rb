@@ -25,7 +25,7 @@ class Favorite < ActiveRecord::Base
       false
     rescue Twitter::Error::Forbidden => e
       false
-    rescue Twitter::Error::TooManyRequests =>
+    rescue Twitter::Error::TooManyRequests => e
       false
     rescue Exception => e
       false

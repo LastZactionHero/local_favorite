@@ -2,6 +2,14 @@ namespace :search do
 
   desc "Search for SearchTerms"
   task :search => :environment do
+    begin
+      find_and_favorite
+    rescue Exception => e
+      ExceptionMailer.exception_email(e, nil).deliver
+    end
+  end
+
+  def find_and_favorite
     auto_favorites_per_term = 3
 
     new_tweets = []
