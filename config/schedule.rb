@@ -26,3 +26,7 @@ end
 every 1.day do
   rake "cleanup:remove_older_than_30_days"
 end
+
+every :sunday, at: "10pm" do
+  rake "weekly_report"
+end
