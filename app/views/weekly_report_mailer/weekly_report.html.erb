@@ -1,0 +1,31 @@
+Weekly report for your account <%= @user.username %>:<br/>
+<br/>
+Favorites this Week: <%= @favorites %><br/>
+Found Tweets this Week: <%= @tweets %><br/>
+<br/>
+<% if @low_results %>
+We did not find many results matching your search term and location. 
+That’s okay, we're here to help! 
+Please feel free to respond to this email and we can assist you in picking some great keywords.<br/>
+<% end %>
+<br/>
+<% if @auto_favoriting_disabled %>
+If you're happy with the tweets you're finding, turn on automatic favoriting and start reaching your audience.<br/>
+<% end %>
+<br/>
+Thanks,<br/>
+The LocalFavorite Team<br/>
+<br/>
+Don't like this email? Click here to unsubscribe.<br/>
+
+
+
+
+
+
+
+
+
+
+
+

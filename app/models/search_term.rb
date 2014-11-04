@@ -11,6 +11,8 @@ class SearchTerm < ActiveRecord::Base
   after_create :search!
 
   def search!
+    return true if Rails.env.test?
+
     processor = TwitterSearchProcessor.new(self, user, TwitterSearcher, TwitterRestClient, Tweet)
     processor.process!
   end

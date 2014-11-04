@@ -48,7 +48,7 @@ gem 'geocoder', '~> 1.2.0'
 gem 'mandrill-api', '~> 1.0.52'
 gem 'mysql2', '~> 0.3.15'
 gem 'omniauth', '~> 1.2.1'
-gem 'pry', '~> 0.10.0', group: [:development]
+gem 'pry', '~> 0.10.0', group: [:development, :test]
 gem 'rails_admin', '~> 0.6.2'
 gem 'rails_autolink', '~> 1.1.5'
 gem 'stripe', '~> 1.11.0'
@@ -60,4 +60,4 @@ gem 'capistrano', '~> 2.15.5', group: :development
 gem 'letter_opener', '~> 1.2.0', group: :development
 gem 'rvm-capistrano', '~> 1.5.1', group: :development
 gem 'rspec-rails', '~> 3.1.0',  group: :test
-gem 'factory_girl_rails', '~> 4.4.1',  group: :text
+gem 'factory_girl_rails', '~> 4.4.1',  group: :test
