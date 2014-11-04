@@ -34,5 +34,10 @@ module LocalFavorite
       :authentication => 'plain', # Mandrill supports 'plain' or 'login'
       :domain => 'localfavorite.me', # your domain to identify your server when connecting
     }
+
+    config.generators do |g|
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    end
+
   end
 end
