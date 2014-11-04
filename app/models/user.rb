@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :tweets
   has_many :favorites
 
+  validates_presence_of :unsubscribe_token
+  before_validation :set_unsubscribe_token
+
   def email_required?
     super && provider.blank?
   end
@@ -36,4 +39,14 @@ class User < ActiveRecord::Base
     search_terms.count < plan.max_search_terms
   end
 
+  def unsubscribe_weekly_reports!
+    self.weekly_updates = false
+    self.save
+  end
+
+  private
+
+  def set_unsubscribe_token
+    self.unsubscribe_token ||= SecureRandom.hex(10)
+  end
 end
