@@ -3,13 +3,14 @@ Weekly report for your account <%= @user.username %>:<br/>
 Favorites this Week: <%= @favorites %><br/>
 Found Tweets this Week: <%= @tweets %><br/>
 <br/>
+<%= link_to "View all results on your dashboard", dashboard_url %><br/><br/>
 <% if @low_results %>
 We did not find many results matching your search term and location. 
 That’s okay, we're here to help! 
 Please feel free to respond to this email and we can assist you in picking some great keywords.<br/>
 <% end %>
-<br/>
 <% if @auto_favoriting_disabled %>
+<br/>
 If you're happy with the tweets you're finding, turn on automatic favoriting and start reaching your audience.<br/>
 <% end %>
 <br/>

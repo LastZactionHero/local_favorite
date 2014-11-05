@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if current_user
       redirect_to dashboard_path, alert: exception.message
     else
-      redirect_to root_path, alert: exception.message
+      redirect_to user_omniauth_authorize_path(:twitter)
     end
   end
 
