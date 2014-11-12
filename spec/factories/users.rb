@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :user do
     email "user@localfavorite.me"
     username "LocalFavoriteMe"
-    automatic_favoriting false
     uid "uid_abc123"
     provider "twitter"
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104052154) do
+ActiveRecord::Schema.define(version: 20141112003507) do
 
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20141104052154) do
     t.string   "username"
     t.string   "twitter_access_token"
     t.string   "twitter_access_token_secret"
-    t.boolean  "automatic_favoriting",        default: false
+    t.boolean  "automatic_favoriting",        default: true
     t.boolean  "weekly_updates",              default: true
     t.string   "unsubscribe_token"
   end

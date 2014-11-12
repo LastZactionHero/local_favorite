@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe User do
 
+  describe 'create' do
+
+    it 'initializes with automatic favoriting true' do
+      user = FactoryGirl.create(:user)
+      expect(user.automatic_favoriting).to eq(true)
+    end
+    
+  end
+
   describe 'unsubscribe_token' do
 
     it 'should have an unsubscribe token' do

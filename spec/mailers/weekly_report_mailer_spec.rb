@@ -46,6 +46,9 @@ describe WeeklyReportMailer do
     end
 
     it 'displays a message if automatic favoriting is off' do
+      user.automatic_favoriting = false
+      user.save
+      
       tweets = (0..5).map do |i|
         FactoryGirl.create(:tweet,
                             user: user,
