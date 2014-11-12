@@ -23,6 +23,8 @@ class TwitterSearcher
       @results = results.map{|r| r.to_h}
     rescue Twitter::Error::Unauthorized => e
       []
+    rescue Twitter::Error::RequestTimeout => e
+      []
     end
   end
 
