@@ -11,6 +11,7 @@ class Ability
     if user
       can [:index, :update], :profile
       can [:index], :dashboard
+      can [:index, :create, :destroy], :blacklist_user
     end
 
     # Define abilities for the passed in user here. For example:

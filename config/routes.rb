@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :blacklist_users, only: [:index, :create, :destroy]
+
   get 'unsubscribe' => 'weekly_report#unsubscribe'
 
   # The priority is based upon order of creation: first created -> highest priority.

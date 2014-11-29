@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   has_many :search_terms
   has_many :tweets
   has_many :favorites
-
+  has_many :blacklist_users
+  
   validates_presence_of :unsubscribe_token
   before_validation :set_unsubscribe_token
 
