@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get 'dashboard' => 'dashboard#index'
-
+  get 'advanced' => 'dashboard#advanced'
+  
   resources :plans, only: [:index] do
     member do
       get :checkout

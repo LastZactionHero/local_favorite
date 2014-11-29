@@ -1,0 +1,32 @@
+<h1>Advanced Settings</h1>
+
+<hr/>
+
+<h3>User Blacklist</h3>
+
+<div ng-controller="BlacklistUserCtrl">
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <input type="text" ng-model="newUser" class="form-control" placeholder="Twitter Username" />
+    </div>    
+    <button type="submit" class="btn btn-default" ng-click="addToBlacklist()">Add to Blacklist</button>
+  </form>
+
+  <br/>
+
+  <ul ng-show="users.length > 0">
+    <li ng-repeat="user in users">
+      {{user}} 
+      <span ng-click="removeFromBlacklist(user)"><%= fa_icon("times") %></span>
+    </li>
+  </ul>
+
+  <div class='well' ng-show="users.length == 0">
+    <h4 class='text-center'>You have not blacklisted any users.</h4>
+    <p class='text-center'>
+      Tweets from blacklisted users will not be automatically favorited.<br/>
+      Add to the list here, or click the "blacklist" button on the user's tweet.
+    </p>
+  </div>
+
+</div>

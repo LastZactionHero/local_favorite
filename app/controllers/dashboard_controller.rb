@@ -10,6 +10,10 @@ class DashboardController < ApplicationController
     @tweets = find_tweets(@selected_search_term)
   end
 
+  def advanced
+    
+  end
+
   private
 
   def find_search_term

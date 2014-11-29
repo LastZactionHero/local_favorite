@@ -1,4 +1,5 @@
 class BlacklistUsersController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   authorize_resource class: false
 
   def index
