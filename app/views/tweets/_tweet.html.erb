@@ -24,6 +24,17 @@
         class: "favorite btn  #{tweet.favorited? ? 'btn-warning' : 'btn-primary'}",
         "data-tweet-id" => tweet.id,
         "data-favorited" => tweet.favorited? %>
+
+    <div class='advanced-options'>
+      <a
+        onClick="blacklistUser('<%= user.screen_name %>')" 
+        data-toggle="tooltip" 
+        data-placement="bottom" 
+        title="Blacklist this user to stop automatically favoriting their tweets">
+        <%= fa_icon("ban") %>
+      </a>
+    </div>
+
   </div>
 
 </li>
