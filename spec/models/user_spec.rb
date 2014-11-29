@@ -31,4 +31,18 @@ describe User do
 
   end
 
+  
+  describe "blacklisted_user?" do
+
+    it "indicates if a user has blacklisted someone" do
+      user = FactoryGirl.create(:user)
+      expect(user.blacklisted_user?("badguy")).to eq(false)
+
+      FactoryGirl.create(:blacklist_user, username: "badguy", user_id: user.id)
+      expect(user.blacklisted_user?("badguy")).to eq(true)
+    end
+
+
+  end
+
 end

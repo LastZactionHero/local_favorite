@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def blacklisted_user?(username)
+    blacklist_users.where(username: username).any?
+  end
+
   private
 
   def set_unsubscribe_token

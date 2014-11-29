@@ -18,7 +18,6 @@ namespace :search do
     SearchTerm.all.each do |term|
       tweets = term.search!
       puts "Found these tweets: #{tweets}"
-      new_tweets << {user: term.user, tweets: tweets}
     end
 
     # Favorite Them
@@ -30,6 +29,9 @@ namespace :search do
 
       puts "Still Here"
       tweets = user_tweets[:tweets]
+
+      tweets.delete_if{|t| user.blacklisted_user?(t.user.screen_name)}
+      
       tweets.sample(auto_favorites_per_term).each do |favorite_tweet|
         puts "Favoriting this tweet: #{favorite_tweet.id}"
 
