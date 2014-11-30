@@ -41,7 +41,6 @@ gem 'spring',        group: :development
 gem 'bootstrap-switch-rails', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'cancan', '~> 1.6.10'
-gem 'classifier', '~> 1.3.4'
 gem 'devise', '~> 3.2.4'
 gem 'font-awesome-rails', '~> 4.0.3.2'
 gem 'exception_notification', '~> 4.0.1'
