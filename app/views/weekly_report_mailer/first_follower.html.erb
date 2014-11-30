@@ -1,0 +1,14 @@
+<h2>Wahoo!</h2>
+<h4>You've got your first follower from LocalFavorite!</h4>
+<p>Your new follower '<%= @screen_name %>'' came from a favorite on LocalFavorite.</p>
+<% if @user.plan.is_a?(DefaultPlan) %>
+  <p>
+    Want to cast a bigger net and catch more followers? 
+    <%= link_to "Get more search terms", plans_url %> starting at just $1/mo.
+  </p>
+<% end %>
+<br/>
+Thanks,<br/>
+The LocalFavorite Team<br/>
+<br/>
+Don't like this email? <%= link_to "Click here to unsubscribe.", unsubscribe_url(unsubscribe_token: @user.unsubscribe_token) %>

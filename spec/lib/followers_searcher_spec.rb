@@ -11,7 +11,7 @@ describe FollowersSearcher do
     }
     let(:favorited){["alexbrackin2", "TeePolish", "ChristyDaleS"]}
 
-    before(:each) do
+    before(:each) do      
       favorited.each do |favorited|
         t = FactoryGirl.create(:tweet, tweet_id: favorited, user_id: user.id, data: {user: {screen_name: favorited}}.to_s)
         FactoryGirl.create(:favorite, selection: "automatic", tweet: t, user: user)
@@ -25,7 +25,20 @@ describe FollowersSearcher do
       end
 
       expect(followers.length).to eq(favorited.length)
-      expect(user.favorited_followers.length).to eq(favorited.length)
+      expect(user.favorited_followers.length).to eq(favorited.length)      
+      expect(ActionMailer::Base.deliveries.length).to eq(1)
+    end
+
+    it 'does not send a new follower email if the user already had followers' do
+      FactoryGirl.create(:favorited_follower, screen_name: "someone", user: user)
+      user.reload
+
+      followers = nil
+      VCR.use_cassette('followers_searcher') do
+        followers = FollowersSearcher.find!(user)
+      end
+
+      expect(ActionMailer::Base.deliveries.length).to eq(0)
     end
 
     it 'does not add the same user twice' do
@@ -44,15 +57,3 @@ describe FollowersSearcher do
   end
 
 end
-
-
-# "alexbrackin2",
-#  "TeePolish",
-#  "AntonioParis",
-#  "hnshah",
-#  "tripleitalent",
-#  "dinyrabo",
-#  "ThreadlessNews",
-#  "JoshOiknine",
-#  "ChristyDaleS",
-#  "_ashleighmiller"

@@ -2,11 +2,13 @@ class FollowersSearcher
 
   class << self
 
-    def find!(user)      
+    def find!(user)
+      had_no_followers = user.favorited_followers.empty?
+
       begin
         client = TwitterRestClient.construct(user)
         followers = client.followers
-        
+
         usernames = []
         followers.each do |follower|
           usernames << follower.username
@@ -16,6 +18,8 @@ class FollowersSearcher
       rescue Twitter::Error::TooManyRequests => e
         return []
       rescue Twitter::Error::RequestTimeout => e
+        return []
+      rescue Twitter::Error::Forbidden => e
         return []
       end
 
@@ -32,11 +36,19 @@ class FollowersSearcher
 
       added_through_favoriting.map do |screen_name|
         FavoritedFollower.create(screen_name: screen_name, user: user)
+
+        if had_no_followers
+          had_no_followers = false
+          first_favorite_message(user, screen_name)
+        end
       end
     end
 
+    private
+
+    def first_favorite_message(user, screen_name)
+      WeeklyReportMailer.first_follower(user, screen_name).deliver
+    end
+
   end
-
-  private
-
 end

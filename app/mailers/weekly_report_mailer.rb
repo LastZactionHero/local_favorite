@@ -15,4 +15,10 @@ class WeeklyReportMailer < ActionMailer::Base
     mail(to: @user.email, subject: "Your Weekly Favorites Report")
   end
 
+  def first_follower(user_id, screen_name)
+    @user = User.find(user_id)
+    @screen_name = screen_name
+    mail(to: @user.email, subject: "Congrats on your first follower from LocalFavorite!")
+  end
+
 end
