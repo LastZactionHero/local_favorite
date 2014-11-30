@@ -18,6 +18,7 @@ namespace :search do
     SearchTerm.all.each do |term|
       tweets = term.search!
       puts "Found these tweets: #{tweets}"
+      new_tweets << {user: term.user, tweets: tweets}
     end
 
     # Favorite Them
