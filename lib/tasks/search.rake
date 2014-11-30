@@ -31,7 +31,7 @@ namespace :search do
       puts "Still Here"
       tweets = user_tweets[:tweets]
 
-      #tweets.delete_if{|t| user.blacklisted_user?(t.user.screen_name)}
+      tweets.delete_if{|t| user.blacklisted_user?(t.user.screen_name)}
       
       tweets.sample(auto_favorites_per_term).each do |favorite_tweet|
         puts "Favoriting this tweet: #{favorite_tweet.id}"
