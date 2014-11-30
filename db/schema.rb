@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129160016) do
+ActiveRecord::Schema.define(version: 20141130223717) do
 
   create_table "blacklist_users", force: true do |t|
     t.string   "username"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorited_followers", force: true do |t|
+    t.string   "screen_name"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   has_many :tweets
   has_many :favorites
   has_many :blacklist_users
-  
+  has_many :favorited_followers
+    
   validates_presence_of :unsubscribe_token
   before_validation :set_unsubscribe_token
 

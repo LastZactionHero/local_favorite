@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
       order("created_at DESC")
 
     @tweets = find_tweets(@selected_search_term)
+    @favorited_followers = current_user.favorited_followers
   end
 
   def advanced

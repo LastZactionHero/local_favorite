@@ -9,6 +9,12 @@ namespace :search do
     end
   end
 
+  task :find_followers => :environment do
+    User.all.each do |user|
+      FollowersSearcher.find!(user)
+    end
+  end
+
   def find_and_favorite
     auto_favorites_per_term = 3
 

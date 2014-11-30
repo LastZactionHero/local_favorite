@@ -41,6 +41,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-switch-rails', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'cancan', '~> 1.6.10'
+gem 'classifier', '~> 1.3.4'
 gem 'devise', '~> 3.2.4'
 gem 'font-awesome-rails', '~> 4.0.3.2'
 gem 'exception_notification', '~> 4.0.1'
@@ -62,5 +63,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'pry', '~> 0.10.0'
+end
+
+group :test do
+  gem 'vcr', '~> 2.9.3'
+  gem 'webmock', '~> 1.20.4'
 end
 
