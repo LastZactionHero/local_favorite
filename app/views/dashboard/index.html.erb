@@ -23,10 +23,6 @@
           <h3><%= pluralize(@favorites.count, "favorite") %></h3>
           <h3><%= pluralize(@tweets.count, "found tweet") %></h3>
           <h3><%= pluralize(@search_terms.count, "search term") %></h3>
-
-          <% if @favorited_followers.any? %>
-            <h3><%= pluralize(@favorited_followers.count, "new followers") %></h3>
-          <% end %>
         </div>
       </div>
     </div>
@@ -56,7 +52,7 @@
 
 <% if @favorited_followers.any? %>
   <div class='row'>
-    <h2>New Followers</h2>
+    <h2>New Followers: <%= @favorited_followers.count %></h2>
     <p>Followers of your account that you've also favorited with LocalFavorite</p>
 
     <ul class='col-md-12'>
