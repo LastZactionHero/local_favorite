@@ -2,6 +2,9 @@ Weekly report for your account <%= @user.username %>:<br/>
 <br/>
 Favorites this Week: <%= @favorites %><br/>
 Found Tweets this Week: <%= @tweets %><br/>
+<% if @followers > 0 %>
+New Followers this Week: <%= @followers %><br/>
+<% end %>
 <br/>
 <%= link_to "View all results on your dashboard", dashboard_url %><br/><br/>
 <% if @low_results %>

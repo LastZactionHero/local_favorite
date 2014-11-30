@@ -6,7 +6,7 @@ describe WeeklyReportMailer do
     let(:user){FactoryGirl.create(:user)}
     let(:search_term){FactoryGirl.create(:search_term, user: user)}
 
-    it 'indicates the number of favorites and tweets found this week' do
+    it 'indicates the number of favorites, tweets, and favorited followers this week' do
       user.automatic_favoriting = true
       user.save
 
@@ -22,10 +22,14 @@ describe WeeklyReportMailer do
                            user: user, 
                            selection: "automatic")
       end
+      (1..10).map do |i|
+        FactoryGirl.create(:favorited_follower, screen_name: "#{i}", user: user)
+      end
 
       mail = WeeklyReportMailer.weekly_report(user.id)
       expect(mail.body).to include("Favorites this Week: 5")
       expect(mail.body).to include("Found Tweets this Week: 52")
+      expect(mail.body).to include("New Followers this Week: 10")
       expect(mail.body).not_to include("We did not find many result")
       expect(mail.body).not_to include("If you're happy with the tweets")
     end
@@ -58,6 +62,22 @@ describe WeeklyReportMailer do
 
       mail = WeeklyReportMailer.weekly_report(user.id)
       expect(mail.body).to include("If you're happy with the tweets")
+    end
+
+
+    it 'does not mention new followers if none are found' do
+      user.automatic_favoriting = false
+      user.save
+      
+      tweets = (0..5).map do |i|
+        FactoryGirl.create(:tweet,
+                            user: user,
+                            search_term: search_term,
+                            tweet_id: "tweet_#{i}")
+      end
+
+      mail = WeeklyReportMailer.weekly_report(user.id)
+      expect(mail.body).not_to include("New Followers this Week")
     end
 
   end
