@@ -6,15 +6,17 @@ class FollowersSearcher
       begin
         client = TwitterRestClient.construct(user)
         followers = client.followers
+        
+        usernames = []
+        followers.each do |follower|
+          usernames << follower.username
+        end
       rescue Twitter::Error::Unauthorized => e
+        return []
+      rescue Twitter::Error::TooManyRequests => e
         return []
       rescue Twitter::Error::RequestTimeout => e
         return []
-      end
-
-      usernames = []
-      followers.each do |follower|
-        usernames << follower.username
       end
 
       added_through_favoriting = []
